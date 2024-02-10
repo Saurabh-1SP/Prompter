@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-import Form from '@components/Form'
+import Form from '@components/Form';
 
 
 const CreatePrompt = () => {
@@ -34,10 +34,10 @@ const CreatePrompt = () => {
         })
 
         if(response.ok) {
-          router.push('/')
+          router.push('/');
         }
       } catch (error) {
-        console.log("This is happening during the fethc",error)
+        console.log("This is happening during the fethc",error);
       } finally {
         setSubmitting(false);
       }
@@ -54,4 +54,4 @@ const CreatePrompt = () => {
   )
 }
 
-export default CreatePrompt
+export default CreatePrompt;
