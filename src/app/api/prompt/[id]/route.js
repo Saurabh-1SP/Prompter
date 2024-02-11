@@ -1,5 +1,6 @@
 import { connectDB } from '@utils/database';
 import Prompt from '@models/prompt';
+import User from '@models/user';
 
 // GET
 export const GET = async (request, { params }) => {
@@ -45,8 +46,11 @@ export const DELETE = async (request, {params}) => {
 
         await Prompt.findByIdAndDelete(params.id);
 
+        await User.findOneAndUpdate({prompts: [params.id]}, { $pull: {prompts: params.id}})
+
         return new Response("Prompt deleted", { status: 200});
     } catch (error) {
+        console.log(error);
         return new Response("Failed to delete Prompt", { status: 500});        
     }
 }

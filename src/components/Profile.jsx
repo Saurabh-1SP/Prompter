@@ -11,9 +11,11 @@ const Profile = ({ name, desc, data,setPosts }) => {
                 method: 'DELETE',
             })
 
-            const filteredPosts = data.filter((p) => p._id !== post._id);
+              const posts = data.prompts
+              const prompts = posts.filter((p) => p._id !== post._id);
 
-            setPosts(filteredPosts);
+              setPosts({...data,prompts})
+            
         } catch (error) {
             console.log(error);
         }

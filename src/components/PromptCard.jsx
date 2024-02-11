@@ -22,24 +22,26 @@ const PromptCard = ({post, handleTagClick,handleDelete}) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <Link className="flex-1 flex justify-start items-center gap-3 cursor-pointer" href={`/user/${post.creator._id}`}>
-          <Image
-            src={post.creator.image}
-            alt="user_image"
-            width={40}
-            height={40}
-            className="rounded-full object-contain"
-          />
+        {post?.creator._id && (
+          <Link className="flex-1 flex justify-start items-center gap-3 cursor-pointer" href={`/user/${post.creator._id}`}>
+            <Image
+              src={post.creator.image}
+              alt="user_image"
+              width={40}
+              height={40}
+              className="rounded-full object-contain"
+            />
 
-          <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900">
-              {post.creator.username}
-            </h3>
-            <p className="font-inter text-sm text-gray-500">
-              {post.creator.email}
-            </p>
-          </div>
-        </Link>
+            <div className="flex flex-col">
+              <h3 className="font-satoshi font-semibold text-gray-900">
+                {post.creator.username}
+              </h3>
+              <p className="font-inter text-sm text-gray-500">
+                {post.creator.email}
+              </p>
+            </div>
+          </Link>
+        )}
 
         <div className="copy_btn" onClick={handleCopy}>
           <Image
@@ -60,7 +62,7 @@ const PromptCard = ({post, handleTagClick,handleDelete}) => {
         #{post.tag}
       </p>
 
-      {session?.user.id === post.creator && pathName === '/user/[id]' && (
+      {session?.user.id === post.creator && pathName === `/user/${post.creator}` && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p 
             className="font-inter text-sm green_gradient cursor-pointer"
