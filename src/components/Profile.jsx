@@ -31,7 +31,7 @@ const Profile = ({ name, desc, data,setPosts }) => {
       </p>
 
       <div className="mt-10 prompt_layout">
-        {data.map((post) => (
+        {data.prompts && data?.prompts.map((post) => (
           <PromptCard
             key={post._id}
             post={post}

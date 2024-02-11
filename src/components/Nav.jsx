@@ -51,9 +51,9 @@ const Nav = () => {
               SignOut
             </button>
 
-            <Link href='/profile'>
+            <Link href={`/user/${session?.user.id}`}>
               <Image
-                src='/assets/images/logo.svg'
+                src={session?.user.image}
                 width={37}
                 height={37}
                 className='rounded-full'
@@ -83,7 +83,7 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex">
             <Image
-              src='/assets/images/logo.svg'
+              src={session?.user.image}
               width={37}
               height={37}
               className='rounded-full'
@@ -94,7 +94,7 @@ const Nav = () => {
             {toggle && (
               <div className="dropdown">
                 <Link 
-                  href='/profile'
+                  href={`/user/${session.user.id}`}
                   className="dropdown_link"
                   onClick={() => setToggle(false)}
                 >
