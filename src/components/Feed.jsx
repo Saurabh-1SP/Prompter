@@ -28,6 +28,7 @@ const Feed = () => {
       const response = await fetch(`/api/prompt/search/${searchText}`)
       const data = await response.json();
 
+      console.log(response);
       setPosts(data);
     } catch (error) {
       console.log(error)
